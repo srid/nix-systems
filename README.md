@@ -2,6 +2,9 @@
 
 Dynamically generated system definitions for Nix flakes.
 
+> [!IMPORTANT]
+> We plan to move to statically-generated lists to minimize evaluation and building. See https://github.com/srid/nix-systems/issues/2
+
 ## Usage
 
 ```nix
