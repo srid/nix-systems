@@ -30,10 +30,12 @@ Each contains `flake.nix` and `default.nix` with the system list.
 
 ## Comparison
 
-| Feature | This repo | [nix-systems](https://github.com/nix-systems) |
+| Feature | This repo | [Numtide's nix-systems](https://github.com/nix-systems) |
 |---------|-----------|-----------------------------------------------|
 | Approach | Single flake, dynamically generated | Separate repository per system |
-| Respects [Hacker Ethic](https://en.wikipedia.org/wiki/Hacker_ethic) | Yes | [No](https://x.com/sridca/status/1798025800798683161) |
+| Respects [Hacker Ethic](https://en.wikipedia.org/wiki/Hacker_ethic) | Yes | No[^no] |
+
+[^no]: See https://x.com/sridca/status/1798466886197207084 & https://x.com/sridca/status/1808605343674450157
 
 ## License
 
