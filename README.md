@@ -52,9 +52,7 @@ To add new systems or update the structure, edit and run:
 
 | Feature | This repo | [Numtide's nix-systems](https://github.com/nix-systems) |
 |---------|-----------|-----------------------------------------------|
-| Approach | Single flake, statically generated | Separate repository per system |
-| Requires `flake.lock` | No | Yes |
-| Build/evaluation overhead | Minimal | Higher |
+| Approach | Single repository for all systems | Separate repository per system |
 | Respects [Hacker Ethic](https://en.wikipedia.org/wiki/Hacker_ethic) | Yes | No[^no] |
 
 [^no]: See https://x.com/sridca/status/1798466886197207084 & https://x.com/sridca/status/1808605343674450157
