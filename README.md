@@ -1,9 +1,6 @@
 # nix-systems
 
-Dynamically generated system definitions for Nix flakes.
-
-> [!IMPORTANT]
-> We plan to move to statically-generated lists to minimize evaluation and building. See https://github.com/srid/nix-systems/issues/2
+Statically generated system definitions for Nix flakes.
 
 ## Usage
 
@@ -12,30 +9,54 @@ Dynamically generated system definitions for Nix flakes.
   inputs.nix-systems.url = "github:srid/nix-systems";
 
   outputs = { nix-systems, ... }: {
-    # Use a specific system
+    # Use a single system
     systems = import (nix-systems + "/x86_64-linux");
+
+    # Or use a combination of systems
+    systems = import (nix-systems + "/aarch64-darwin,x86_64-linux");
+
+    # Or use all systems
+    systems = import (nix-systems + "/aarch64-darwin,aarch64-linux,x86_64-linux");
   };
 }
 ```
 
-## Build
+## Why?
 
-```bash
-nix build
-```
+You are doing something that needs a runtime function from `[System]` to `FlakePath`.
 
-Produces `result/` with subdirectories for each supported system:
+## Available Directories
+
+This repository contains statically generated directories for:
+
+**Single systems:**
 - `x86_64-linux/`
 - `aarch64-linux/`
 - `aarch64-darwin/`
 
-Each contains `flake.nix` and `default.nix` with the system list.
+**2-system combinations:**
+- `aarch64-darwin,aarch64-linux/`
+- `aarch64-darwin,x86_64-linux/`
+- `aarch64-linux,x86_64-linux/`
+
+**All systems:**
+- `aarch64-darwin,aarch64-linux,x86_64-linux/`
+
+Each directory contains `flake.nix` and `default.nix` with the corresponding system list.
+
+## Regenerating
+
+To add new systems or update the structure, edit and run:
+
+```bash
+./generate.sh
+```
 
 ## Comparison
 
 | Feature | This repo | [Numtide's nix-systems](https://github.com/nix-systems) |
 |---------|-----------|-----------------------------------------------|
-| Approach | Single flake, dynamically generated | Separate repository per system |
+| Approach | Single repository for all systems | Separate repository per system |
 | Respects [Hacker Ethic](https://en.wikipedia.org/wiki/Hacker_ethic) | Yes | No[^no] |
 
 [^no]: See https://x.com/sridca/status/1798466886197207084 & https://x.com/sridca/status/1808605343674450157
