@@ -21,6 +21,10 @@ Statically generated system definitions for Nix flakes.
 }
 ```
 
+## Why?
+
+You are doing something that needs a runtime function from `[System]` to `FlakePath`.
+
 ## Available Directories
 
 This repository contains statically generated directories for:
