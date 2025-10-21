@@ -2,25 +2,6 @@
 
 Statically generated system definitions for Nix flakes.
 
-## Usage
-
-```nix
-{
-  inputs.nix-systems.url = "github:srid/nix-systems";
-
-  outputs = { nix-systems, ... }: {
-    # Use a single system
-    systems = import (nix-systems + "/x86_64-linux");
-
-    # Or use a combination of systems
-    systems = import (nix-systems + "/aarch64-darwin,x86_64-linux");
-
-    # Or use all systems
-    systems = import (nix-systems + "/aarch64-darwin,aarch64-linux,x86_64-linux");
-  };
-}
-```
-
 ## Why?
 
 You are doing something that needs a runtime function from `[System]` to `FlakePath`.
