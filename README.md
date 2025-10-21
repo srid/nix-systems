@@ -1,9 +1,6 @@
 # nix-systems
 
-Dynamically generated system definitions for Nix flakes.
-
-> [!IMPORTANT]
-> We plan to move to statically-generated lists to minimize evaluation and building. See https://github.com/srid/nix-systems/issues/2
+Statically generated system definitions for Nix flakes.
 
 ## Usage
 
@@ -18,24 +15,30 @@ Dynamically generated system definitions for Nix flakes.
 }
 ```
 
-## Build
+## Supported Systems
 
-```bash
-nix build
-```
-
-Produces `result/` with subdirectories for each supported system:
+This repository contains statically generated directories for:
 - `x86_64-linux/`
 - `aarch64-linux/`
 - `aarch64-darwin/`
 
-Each contains `flake.nix` and `default.nix` with the system list.
+Each directory contains `flake.nix` and `default.nix` with the system list.
+
+## Regenerating
+
+To add new systems or update the structure, edit and run:
+
+```bash
+./generate.sh
+```
 
 ## Comparison
 
 | Feature | This repo | [Numtide's nix-systems](https://github.com/nix-systems) |
 |---------|-----------|-----------------------------------------------|
-| Approach | Single flake, dynamically generated | Separate repository per system |
+| Approach | Single flake, statically generated | Separate repository per system |
+| Requires `flake.lock` | No | Yes |
+| Build/evaluation overhead | Minimal | Higher |
 | Respects [Hacker Ethic](https://en.wikipedia.org/wiki/Hacker_ethic) | Yes | No[^no] |
 
 [^no]: See https://x.com/sridca/status/1798466886197207084 & https://x.com/sridca/status/1808605343674450157
