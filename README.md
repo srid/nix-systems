@@ -9,20 +9,36 @@ Statically generated system definitions for Nix flakes.
   inputs.nix-systems.url = "github:srid/nix-systems";
 
   outputs = { nix-systems, ... }: {
-    # Use a specific system
+    # Use a single system
     systems = import (nix-systems + "/x86_64-linux");
+
+    # Or use a combination of systems
+    systems = import (nix-systems + "/aarch64-darwin,x86_64-linux");
+
+    # Or use all systems
+    systems = import (nix-systems + "/aarch64-darwin,aarch64-linux,x86_64-linux");
   };
 }
 ```
 
-## Supported Systems
+## Available Directories
 
 This repository contains statically generated directories for:
+
+**Single systems:**
 - `x86_64-linux/`
 - `aarch64-linux/`
 - `aarch64-darwin/`
 
-Each directory contains `flake.nix` and `default.nix` with the system list.
+**2-system combinations:**
+- `aarch64-darwin,aarch64-linux/`
+- `aarch64-darwin,x86_64-linux/`
+- `aarch64-linux,x86_64-linux/`
+
+**All systems:**
+- `aarch64-darwin,aarch64-linux,x86_64-linux/`
+
+Each directory contains `flake.nix` and `default.nix` with the corresponding system list.
 
 ## Regenerating
 
